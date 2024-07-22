@@ -29,12 +29,14 @@ export async function POST({ request ,cookies}) {
 		await prisma.user.update(userUpdateData);
 		  
 
-		await cookies.set('email', '', {
+		cookies.set('email', '', {
 			httpOnly: false,
 			path: '/',
 			secure: process.env.NODE_ENV !== 'development',
 			maxAge: 0 
 		  });
+
+		
 
         return json({ status:'succes' });
     } catch (error) {

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" >
       import * as Card from "$lib/components/ui/card";
     
 let toast = false;
@@ -28,11 +28,13 @@ let toast = false;
 )
         const result = await data.json();
         console.log(result);
+        
         if(result){
           toast = true;
         }
         return json({status:'success',data:result});
       
+
         } catch (error) {
           console.log(error); 
         }
@@ -67,7 +69,7 @@ let toast = false;
       <div class="modal-content">
         <h3 class="text-2xl font-bold mb-4">Success!</h3>
         <p>Registration completed successfully.</p>
-        <a href="/" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={() => showSuccessModal = false}>
+        <a href="/" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={() => toast = false}>
           Next 
         </a>
       </div>

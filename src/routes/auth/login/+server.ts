@@ -25,7 +25,7 @@ export async function POST({ request, cookies }) {
 
 		const cookieOptions = {
 			httpOnly: true,
-			path: '/api',
+			path: '/auth',
 			secure: process.env.NODE_ENV !== 'development',
 			maxAge: tokenMaxAge
 		};

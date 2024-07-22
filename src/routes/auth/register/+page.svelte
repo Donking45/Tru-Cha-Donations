@@ -2,53 +2,77 @@
   import { onMount } from 'svelte';
   export let form;
   export let data;
+  let verificationCode = 0; 
+  let code = 0;
 
   let name = '';
   let email = '';
   let password = '';
   let passwordConfirm = '';
   let errorMessage = '';
+  let showVerificationModal = false;
   let showSuccessModal = false;
 
-  async function handleSubmit(event) {
+  async function verification(event){
     event.preventDefault();
-
-    // Validate passwords match
     if (password !== passwordConfirm) {
       errorMessage = 'Passwords do not match.';
       return;
     }
-
-    try {
-      console.log(name, email, password,passwordConfirm); 
-      const response = await fetch('/auth/register', {
+    verificationCode = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+    const response = await fetch('/auth/verification', {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, password,passwordConfirm })
+        body: JSON.stringify({ email, verificationCode })
+    });
 
+    const result = await response.json();
 
-      });
+    if (!response.ok) {
+      errorMessage = result.message;
+      return;
+    }
 
-      const result = await response.json();
+    showVerificationModal = true;
+    console.log('Verification code sent:', verificationCode);
+  }
 
-      if (!response.ok) {
-        errorMessage = result.message;
-        return;
+  async function handleSubmit(event) {
+    event.preventDefault();
+    console.log(verificationCode,code,email,password);
+    if (verificationCode === code) {
+      try {
+        const response = await fetch('/auth/register', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, password,passwordConfirm })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          errorMessage = result.message;
+          return;
+        }
+
+        // Show success modal
+        showSuccessModal = true;
+        console.log('Registration successful:', result);
+      } catch (error) {
+        console.error('Error:', error);
+        errorMessage = 'Something went wrong. Please try again.';
       }
-
-      // Show success modal
-      showSuccessModal = true;
-      console.log('Registration successful:', result);
-    } catch (error) {
-      console.error('Error:', error);
-      errorMessage = 'Something went wrong. Please try again.';
+    } else {
+      errorMessage = 'Code is not verified.';
     }
   }
 
   function closeModal() {
-    showSuccessModal = false;
+    showVerificationModal = false;
   }
 </script>
 
@@ -75,7 +99,7 @@
 <div class="bg-slate-100 flex items-center justify-center h-screen">
   <div class="w-full max-w-md bg-slate-400 p-8 rounded-lg shadow-md">
     <h2 class="text-2xl font-bold mb-6 text-slate-900 text-center">Register</h2>
-    <form on:submit|preventDefault={handleSubmit}>
+    <form on:submit={verification}>
       <div class="mb-4">
         <label for="name" class="block text-slate-900 text-sm font-bold mb-2">Name</label>
         <input type="text" id="name" name="name" bind:value={name} class="shadow appearance-none border rounded w-full py-2 px-3 text-slate-900 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name" required>
@@ -104,12 +128,27 @@
   </div>
 </div>
 
+{#if showVerificationModal}
+  <div class="modal">
+    <div class="modal-content">
+      <h3 class="text-2xl font-bold mb-4">Verification</h3>
+      <p>Please enter the 6 digit verification code.</p>
+      <form on:submit={handleSubmit}>
+        <input type="number" bind:value={code} class="shadow appearance-none border rounded w-full py-2 px-3 text-slate-900 leading-tight focus:outline-none focus:shadow-outline" required>
+        <button type="submit" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4">
+          Verify
+        </button>
+      </form>
+    </div>
+  </div>
+{/if}
+
 {#if showSuccessModal}
-  <div class="modal" on:click={closeModal}>
-    <div class="modal-content" on:click|stopPropagation>
+  <div class="modal">
+    <div class="modal-content">
       <h3 class="text-2xl font-bold mb-4">Success!</h3>
-      <p>You have successfully registered.</p>
-      <button class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={closeModal}>
+      <p>Registration completed successfully.</p>
+      <button class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={() => showSuccessModal = false}>
         Close
       </button>
     </div>

@@ -3,7 +3,7 @@
     import chain from '$lib//chain.jpg';
     import jar from '$lib//jar.jpg';
     import jar2 from '$lib//jar2.jpg';
-    import '../app.css';
+ 
 
 </script>
 

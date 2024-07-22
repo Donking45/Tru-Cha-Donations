@@ -4,12 +4,18 @@ import bcrypt from 'bcryptjs';
 import { ZodError } from 'zod';
 import { prisma } from '$lib/server/prisma';
 
-export async function POST({ request }) {
+export async function POST({ request,cookies }) {
 	try {
 		const body = (await request.json()) as RegisterUserInput;
 		const data = RegisterUserSchema.parse(body);
 
 		const hashedPassword = await bcrypt.hash(data.password, 12);
+		const cookieOptions = {
+			httpOnly: false,
+			path: '/',
+			secure: process.env.NODE_ENV !== 'development',
+			maxAge: 12000000000
+		};
 
 		const user = await prisma.user.create({
 			data: {
@@ -18,8 +24,10 @@ export async function POST({ request }) {
 				password: hashedPassword,
 				photo: data.photo
 			}
-		});
-
+		})
+		
+		cookies.set('email',data.email.toString(), cookieOptions);
+		console.log(cookies.get('email'));
 		return json({ status: 'success', data: { ...user, password: undefined } }, { status: 201 });
 	} catch (error: any) {
 		if (error instanceof ZodError) {

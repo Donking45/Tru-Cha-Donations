@@ -35,6 +35,8 @@
       return;
     }
 
+   
+
     showVerificationModal = true;
     console.log('Verification code sent:', verificationCode);
   }
@@ -135,7 +137,7 @@
       <p>Please enter the 6 digit verification code.</p>
       <form on:submit={handleSubmit}>
         <input type="number" bind:value={code} class="shadow appearance-none border rounded w-full py-2 px-3 text-slate-900 leading-tight focus:outline-none focus:shadow-outline" required>
-        <button type="submit" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4">
+        <button  type="submit" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4">
           Verify
         </button>
       </form>
@@ -148,9 +150,9 @@
     <div class="modal-content">
       <h3 class="text-2xl font-bold mb-4">Success!</h3>
       <p>Registration completed successfully.</p>
-      <button class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={() => showSuccessModal = false}>
-        Close
-      </button>
+      <a href="/details" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={() => showSuccessModal = false}>
+        Next 
+      </a>
     </div>
   </div>
 {/if}

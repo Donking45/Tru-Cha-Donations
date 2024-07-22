@@ -24,8 +24,8 @@ export async function POST({ request, cookies }) {
 		const tokenMaxAge = parseInt(JWT_EXPIRES_IN) * 60;
 
 		const cookieOptions = {
-			httpOnly: true,
-			path: '/auth',
+			httpOnly: false,
+			path: '/',
 			secure: process.env.NODE_ENV !== 'development',
 			maxAge: tokenMaxAge
 		};
@@ -35,6 +35,8 @@ export async function POST({ request, cookies }) {
 			...cookieOptions,
 			httpOnly: false
 		});
+		
+		
 
 		return json({ token });
 	} catch (error: any) {

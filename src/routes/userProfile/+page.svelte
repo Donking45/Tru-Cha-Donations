@@ -61,6 +61,7 @@
     }
   };
   
+ 
   onMount(async () => {
     await getCharity();
     try {
@@ -82,11 +83,8 @@
       <CardTitle>{charity.name}</CardTitle>
     </CardHeader>
     <CardBody>
-      <CardSubtitle>{charity.organization}</CardSubtitle>
-      <CardText>{charity.mission}</CardText>
-      <Button>Donate</Button>
+      <Button href='/charity/{charity.id}'>Show Details</Button>
     </CardBody>
-    <CardFooter>Updated at: {charity.updatedAt}</CardFooter>
   </Card>
   {/each}
   </div>

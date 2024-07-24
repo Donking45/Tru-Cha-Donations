@@ -13,9 +13,14 @@ export const handle: Handle = async ({ resolve, event }) => {
 		authToken = request.headers.get('Authorization')?.substring(7);
 	}
 
+	if(authToken &&
+		(url.pathname.startsWith('/auth/register') || url.pathname.startsWith('/auth/login') )
+	) {
+		throw error(401, 'You are already signed in.');
+	}
 	if (
 		!authToken &&
-		(url.pathname.startsWith('/api/users') || url.pathname.startsWith('/api/auth/logout'))
+		(url.pathname.startsWith('/api/users') ||url.pathname.startsWith('/userprofile') || url.pathname.startsWith('/api/auth/logout'))
 	) {
 		throw error(401, 'You are not logged in. Please provide a token to gain access.');
 	}

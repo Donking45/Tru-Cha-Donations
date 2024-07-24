@@ -16,6 +16,9 @@
       
     });
 </script>
+<svelte:head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</svelte:head>
 
 
 
@@ -39,11 +42,14 @@
          class="cursor-pointer shadow-md shadow-black py-[6px] px-[12px] text-slate-900 bg-white border-slate-900 border-[1px] rounded-md flex flex-row items-start justify-start z-[2] hover:bg-darkslategray-100"
          id="button"
        >Sign up</a>
+       <a href="/charity" class="" >Login as Charity</a>
          {/if}
 
          {#if token}
-            <a href="/userProfile" class="cursor-pointer shadow-md shadow-black [border:none] py-[6px] px-[12px] text-white bg-slate-900 rounded-md flex flex-row items-start justify-start z-[2] hover:bg-darkslategray-100">donate</a>
+            <a href="/userprofile" class="cursor-pointer shadow-md shadow-black [border:none] py-[6px] px-[12px] text-white bg-slate-900 rounded-md flex flex-row items-start justify-start z-[2] hover:bg-darkslategray-100">donate</a>
          {/if}
+
+
          
 
            </section>

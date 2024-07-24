@@ -4,7 +4,7 @@ export async function POST({ cookies, locals }) {
 	locals.user = null;
 
 	const cookieOptions = {
-		path: '/api',
+		path: '/',
 		secure: process.env.NODE_ENV !== 'development'
 	};
 

@@ -89,9 +89,9 @@
     <div class="modal-content" on:click|stopPropagation>
       <h3 class="text-2xl font-bold mb-4">Success!</h3>
       <p>You have successfully logged in.</p>
-      <button class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={closeModal}>
-        Close
-      </button>
+      <a href="/userprofile" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={closeModal}>
+        next
+      </a>
     </div>
   </div>
 {/if}

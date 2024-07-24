@@ -16,16 +16,18 @@ export async function POST({ request ,cookies}) {
 			  email: email_cookie
 			},
 			data: {
-			  phoneNumber: body.phoneNumber,
-			  address: body.address,
-			  employment: body.employment,
-			  salary: body.salary,
-			  dateOfBirth: "2001-12-12T00:00:00Z", // Adjusted to include time and timezone
-			  emailVerified: true
+                financialInfo: body.financialInfo,
+                mission: body.mission,
+                projects: body.projects,
+			    emailVerified: true
 			}
 		  };
+          
+  
+
+  
 		  
-		await prisma.user.update(userUpdateData);
+		await prisma.charity.update(userUpdateData);
 		  
 
 		cookies.set('email', '', {

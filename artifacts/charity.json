@@ -1,0 +1,52 @@
+{
+    "version": 9,
+    "compilerVersion": "1.19.2+commit.c3a20a0",
+    "contract": "Donation",
+    "md5": "4e5b836ac26b55498ff6e570d4efb017",
+    "structs": [],
+    "library": [],
+    "alias": [],
+    "abi": [
+        {
+            "type": "function",
+            "name": "unlock",
+            "index": 0,
+            "params": [
+                {
+                    "name": "donor",
+                    "type": "bytes"
+                },
+                {
+                    "name": "message",
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "type": "constructor",
+            "params": [
+                {
+                    "name": "charity",
+                    "type": "bytes"
+                },
+                {
+                    "name": "donor",
+                    "type": "bytes"
+                },
+                {
+                    "name": "amount",
+                    "type": "int"
+                },
+                {
+                    "name": "expenditureHash",
+                    "type": "Sha256"
+                }
+            ]
+        }
+    ],
+    "stateProps": [],
+    "buildType": "debug",
+    "file": "file:///D:/tsoc/tsoc-2/smart-contract-demo/artifacts/charity.scrypt",
+    "hex": "<charity><donor><amount><expenditureHash>5279567987695479a8517987777777777777",
+    "sourceMapFile": ""
+}

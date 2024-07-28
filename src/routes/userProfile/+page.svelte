@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
+  import Wallet from './wallet/+page.svelte';
   import {
     Button,
     Card,
@@ -12,7 +13,7 @@
     Offcanvas
   } from '@sveltestrap/sveltestrap';
   import { onMount } from 'svelte';
-
+export let form;
   let charities = writable([]);
   let users = writable([]);
   let isOpen = false;
@@ -72,6 +73,10 @@
   });
 </script>
 
+
+{#if $users.length > 0 && !$users[0].paymail}
+  <Wallet />
+{/if}
 <Button class='relative left-[88%]' color="dark" on:click={toggle}>Show User Details</Button>
 <div>
   <h1>Charities</h1>
@@ -95,6 +100,9 @@
     {#each $users as user}
     <div>
       <h2>Name: {user.name}</h2>
+      {#if user.paymail}
+       <span>paymail: <p>{user.paymail}</p></span>
+      {/if}
       <span>Address: <p>{user.address}</p></span>
       <span>Phone Number: <p>{user.phoneNumber}</p></span>
       <span>Salary: <p>{user.salary}</p></span>

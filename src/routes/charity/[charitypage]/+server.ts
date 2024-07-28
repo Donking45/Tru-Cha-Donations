@@ -16,7 +16,7 @@ export async function GET({ params }) {
         }
 
         const { password, ...charityData } = charity;
-
+        console.log(charityData);
         return json(charityData);
     } catch (error) {
         // Log the error and return a 500 Internal Server Error response

@@ -21,9 +21,18 @@ model User {
   dateOfBirth          DateTime? // Optional date of birth
   emailVerified        Boolean   @default(false)
   createdAt            DateTime  @default(now())
+  paymail        String?
   updatedAt            DateTime  @updatedAt
 }
 
+model Donor {
+  id                   String       @id 
+  donor_id String
+  
+  charity_id String
+  amount String
+  proof String?
+}
 
 model Charity {
   id             String   @id @default(cuid())
@@ -34,8 +43,11 @@ model Charity {
   mission        String?
   projects       String?
   financialInfo  String?
+  paymail        String?
   emailVerified  Boolean  @default(false)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+
 

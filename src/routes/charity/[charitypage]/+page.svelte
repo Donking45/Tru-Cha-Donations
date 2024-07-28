@@ -26,7 +26,7 @@
     <CardTitle>{info.name}</CardTitle>
   </CardHeader>
   <CardBody>
-    <CardSubtitle>Card subtitle</CardSubtitle>
+    <CardSubtitle>Paymail : {info.paymail}</CardSubtitle>
     <CardText>{info.organization}</CardText>
     <CardText><b>Mission Statement:</b> {info.mission}</CardText>
     
@@ -48,7 +48,7 @@
           <DropdownItem>Blockchain</DropdownItem>
         </DropdownMenu>
       </Dropdown>
-      <Button color='success' size='md' >Donate</Button>
+      <Button href='/charity/donate' color='success' size='md' >Donate</Button>
     </div>
   </CardBody>
   <CardFooter>Created: {info.updatedAt.substring(0,10)}</CardFooter>

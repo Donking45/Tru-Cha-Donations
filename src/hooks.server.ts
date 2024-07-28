@@ -28,6 +28,7 @@ export const handle: Handle = async ({ resolve, event }) => {
 	try {
 		if (authToken) {
 			const { sub } = await verifyJWT<{ sub: string }>(authToken);
+			console.log(sub);
 			const user = await prisma.user.findUnique({ where: { id: sub } });
 			if (!user) {
 				throw error(401, 'User belonging to this token no longer exists');

@@ -19,6 +19,7 @@ export async function POST({ request ,cookies}) {
                 financialInfo: body.financialInfo,
                 mission: body.mission,
                 projects: body.projects,
+				paymail: body.paymail,
 			    emailVerified: true
 			}
 		  };

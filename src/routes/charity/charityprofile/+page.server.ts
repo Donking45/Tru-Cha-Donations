@@ -1,9 +1,9 @@
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, params }) => {
-  console.log('Fetching data for id:', params.charitypage);
-  const res = await fetch(`/charity/${params.charitypage}`);
-  
+ 
+  const res = await fetch(`/charity/charityprofile`);
+    console.log(res);
   if (!res.ok) {
     console.error('Failed to fetch:', res.statusText);
     return {
@@ -13,7 +13,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
   }
 
   const data = await res.json();
-
+  console.log(data)
   return {
     info: data
   };

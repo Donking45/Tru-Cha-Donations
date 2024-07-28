@@ -1,0 +1,11 @@
+
+contract Donation {
+  bytes charity;
+  bytes donor;
+  int amount;
+  Sha256 expenditureHash;
+  public function unlock(bytes donor, bytes message) {
+    require(this.donor == donor);
+    require(sha256(message) == this.expenditureHash);
+  }
+}

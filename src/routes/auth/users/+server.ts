@@ -3,7 +3,7 @@ import { json } from '@sveltejs/kit';
 export async function GET({ locals }) {
 	try {
 		const user = locals.user;
-
+		console.log("hello");
 		if (!user) {
 			return json(
 				{

@@ -1,7 +1,7 @@
 <script  >
 // @ts-nocheck
 
-    
+    export let form;
 
 
 import {
@@ -22,7 +22,7 @@ const toggle = () => {
   isOpen = !isOpen;
 };
 
-
+import { Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, TabContent, TabPane } from '@sveltestrap/sveltestrap';
 
 
 export let data;
@@ -58,7 +58,7 @@ Data.set(info);
   </ModalBody>
   <ModalFooter></ModalFooter>
 </Modal>
-</div>
+
 
 
 

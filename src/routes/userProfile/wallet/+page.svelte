@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, TabContent, TabPane } from '@sveltestrap/sveltestrap';
 <<<<<<< HEAD
   
@@ -45,4 +45,4 @@
     </ModalBody>
     <ModalFooter></ModalFooter>
   </Modal>
-</div>
+</div> -->

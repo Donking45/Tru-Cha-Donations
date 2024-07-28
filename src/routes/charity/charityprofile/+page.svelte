@@ -1,4 +1,6 @@
 <script  >
+// @ts-nocheck
+
     
   import Wallet from '../../userprofile/wallet/+page.svelte';
 

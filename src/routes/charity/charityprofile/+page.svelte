@@ -1,11 +1,17 @@
-<script  >
+<script lang="ts" >
 // @ts-nocheck
 
-    export let form;
 
+  let open = false;
+  let size: 'xl' | undefined;
 
+  const toggleXl = () => {
+    size = 'xl';
+    open = !open;
+  };
+
+  
 import {
-    Button,
     Card,
     CardBody,
     CardFooter,

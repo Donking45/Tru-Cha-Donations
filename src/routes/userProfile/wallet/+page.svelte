@@ -1,6 +1,10 @@
 <script lang="ts">
   import { Button, ButtonGroup, Modal, ModalBody, ModalFooter, ModalHeader, TabContent, TabPane } from '@sveltestrap/sveltestrap';
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> be34d7ee2d5c95d78c7e1304d198920b392f7d19
   export let form;
 
   

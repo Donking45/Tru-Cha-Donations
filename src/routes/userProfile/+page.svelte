@@ -13,7 +13,7 @@
     Offcanvas
   } from '@sveltestrap/sveltestrap';
   import { onMount } from 'svelte';
-export let form;
+
   let charities = writable([]);
   let users = writable([]);
   let isOpen = false;

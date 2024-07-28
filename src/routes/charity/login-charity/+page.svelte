@@ -85,8 +85,8 @@
   </div>
   
   {#if showSuccessModal}
-    <div class="modal" on:click={closeModal}>
-      <div class="modal-content" on:click|stopPropagation>
+    <div class="modal">
+      <div class="modal-content" >
         <h3 class="text-2xl font-bold mb-4">Success!</h3>
         <p>You have successfully logged in.</p>
         <a href="/charity/charityprofile" class="bg-slate-900 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded mt-4" on:click={closeModal}>

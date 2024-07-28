@@ -1,5 +1,5 @@
 <script lang="ts" >
-// @ts-nocheck
+
 
 
   let open = false;

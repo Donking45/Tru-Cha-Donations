@@ -3,10 +3,6 @@ import NeucronSDK from "neucron-sdk";
 
 import { prisma } from '$lib/server/prisma';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> be34d7ee2d5c95d78c7e1304d198920b392f7d19
 export const actions = {
 
     login: async ({request}) => {
